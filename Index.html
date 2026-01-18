@@ -1,0 +1,764 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>All-in-One Calculator Hub (India) – EMI, GST, SIP, FD, Salary, BMI & More</title>
+  <meta name="description" content="Premium all-in-one calculator hub: EMI, GST, SIP, FD, Salary in-hand, Age, Percentage, BMI, and Fuel Cost." />
+  <meta name="robots" content="index,follow" />
+  <style>
+    :root{
+      --bg:#070a10;
+      --card:#0d1320;
+      --card2:#0b111c;
+      --border:#1c2a40;
+      --text:#eaf0f8;
+      --muted:#a9b7ca;
+      --muted2:#7f92ab;
+      --accent:#4f8cff;
+      --accent2:#7c5cff;
+      --good:#2bd4a7;
+      --bad:#ff5c7a;
+      --shadow: 0 18px 60px rgba(0,0,0,.45);
+      --radius: 18px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
+      background:
+        radial-gradient(900px 500px at 20% -10%, rgba(79,140,255,.22), transparent 60%),
+        radial-gradient(900px 500px at 90% 0%, rgba(124,92,255,.16), transparent 55%),
+        radial-gradient(900px 500px at 50% 110%, rgba(43,212,167,.08), transparent 60%),
+        var(--bg);
+      color:var(--text);
+    }
+    a{color:#9cc5ff;text-decoration:none}
+    .wrap{max-width:1100px;margin:0 auto;padding:22px}
+    .topbar{
+      display:flex;align-items:center;justify-content:space-between;gap:14px;
+      padding:14px 16px;border:1px solid var(--border);border-radius:22px;
+      background:rgba(13,19,32,.7);backdrop-filter: blur(10px);
+      box-shadow: var(--shadow);
+      position:sticky;top:14px;z-index:10;
+    }
+    .brand{display:flex;align-items:center;gap:10px;min-width:220px}
+    .logo{
+      width:38px;height:38px;border-radius:14px;
+      background:linear-gradient(135deg,var(--accent),var(--accent2));
+      display:grid;place-items:center;font-weight:900;
+      box-shadow: 0 10px 30px rgba(79,140,255,.25);
+    }
+    .brand h1{font-size:16px;margin:0}
+    .brand p{margin:0;color:var(--muted2);font-size:12px}
+    .search{
+      flex:1;display:flex;gap:10px;align-items:center;
+      border:1px solid var(--border);border-radius:16px;padding:10px 12px;
+      background:rgba(11,17,28,.6);
+    }
+    .search input{
+      width:100%;background:transparent;border:0;outline:0;color:var(--text);
+      font-size:14px;
+    }
+    .pill{
+      display:flex;gap:8px;align-items:center;
+      padding:10px 12px;border:1px solid var(--border);
+      border-radius:16px;background:rgba(11,17,28,.6);color:var(--muted);
+      font-size:13px;white-space:nowrap;
+    }
+
+    .hero{
+      margin-top:18px;
+      display:grid;grid-template-columns: 1.25fr .75fr;gap:16px;
+    }
+    @media(max-width:940px){.hero{grid-template-columns:1fr}}
+    .card{
+      border:1px solid var(--border);
+      border-radius:var(--radius);
+      background:rgba(13,19,32,.72);
+      backdrop-filter: blur(10px);
+      box-shadow: var(--shadow);
+      padding:18px;
+    }
+    .hero h2{margin:0 0 6px;font-size:22px}
+    .hero p{margin:0;color:var(--muted);line-height:1.55}
+    .tips{display:grid;gap:10px;margin-top:12px}
+    .tip{
+      background:rgba(11,17,28,.6);
+      border:1px solid var(--border);
+      border-radius:16px;padding:12px;
+      color:var(--muted);font-size:13px;
+    }
+    .grid{
+      margin-top:16px;
+      display:grid;grid-template-columns: 280px 1fr;gap:16px;
+    }
+    @media(max-width:940px){.grid{grid-template-columns:1fr}}
+    .nav{
+      padding:10px;
+      display:grid;gap:8px;
+    }
+    .nav button{
+      width:100%;
+      text-align:left;
+      border:1px solid transparent;
+      background:transparent;
+      color:var(--muted);
+      padding:12px 12px;border-radius:14px;
+      cursor:pointer;font-size:14px;
+      display:flex;align-items:center;justify-content:space-between;gap:8px;
+    }
+    .nav button:hover{background:rgba(11,17,28,.55);border-color:var(--border);color:var(--text)}
+    .nav button.active{
+      background:linear-gradient(135deg, rgba(79,140,255,.20), rgba(124,92,255,.14));
+      border-color:rgba(79,140,255,.35);
+      color:var(--text);
+    }
+    .badge{
+      font-size:12px;color:var(--muted2);
+      border:1px solid var(--border);padding:4px 8px;border-radius:999px;
+      background:rgba(11,17,28,.5);
+    }
+    .pane{display:none}
+    .pane.active{display:block}
+    .pane h3{margin:0 0 10px;font-size:18px}
+    .row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    @media(max-width:720px){.row{grid-template-columns:1fr}}
+    label{display:block;margin:10px 0 6px;color:#cfe0f5;font-size:13px}
+    input,select{
+      width:100%;
+      padding:12px 12px;
+      border-radius:14px;
+      border:1px solid #273a57;
+      background:rgba(11,17,28,.65);
+      color:var(--text);
+      font-size:15px;
+      outline:none;
+    }
+    input:focus,select:focus{border-color:rgba(79,140,255,.7);box-shadow:0 0 0 4px rgba(79,140,255,.12)}
+    .actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
+    .btn{
+      border:0;cursor:pointer;
+      padding:11px 14px;border-radius:14px;font-weight:700;
+      background:linear-gradient(135deg,var(--accent),var(--accent2));
+      color:white;box-shadow:0 14px 40px rgba(79,140,255,.18);
+    }
+    .btn.secondary{
+      background:rgba(11,17,28,.6);
+      border:1px solid var(--border);
+      color:var(--text);
+      box-shadow:none;
+    }
+    .out{
+      margin-top:14px;
+      display:grid;grid-template-columns: 1fr 1fr 1fr;
+      gap:12px;
+    }
+    @media(max-width:860px){.out{grid-template-columns:1fr}}
+    .box{
+      background:rgba(11,17,28,.6);
+      border:1px solid var(--border);
+      border-radius:16px;
+      padding:12px;
+    }
+    .k{color:var(--muted2);font-size:12px}
+    .v{font-size:20px;font-weight:900;margin-top:6px}
+    .small{font-size:13px;color:var(--muted);line-height:1.55;margin-top:10px}
+    footer{
+      margin:18px 0 8px;
+      color:var(--muted2);
+      font-size:12px;line-height:1.55;
+      text-align:center;
+    }
+    .ok{color:var(--good)}
+    .no{color:var(--bad)}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="topbar">
+      <div class="brand">
+        <div class="logo">Σ</div>
+        <div>
+          <h1>Calculator Hub</h1>
+          <p>EMI • GST • SIP • FD • Salary • BMI • More</p>
+        </div>
+      </div>
+
+      <div class="search" title="Search calculators">
+        <span style="color:var(--muted2);font-size:13px">🔎</span>
+        <input id="search" placeholder="Search: EMI, GST, SIP, FD, Salary, BMI, Age..." />
+      </div>
+
+      <div class="pill" title="Tip">
+        <span>⚡</span><span>Fast & Mobile-friendly</span>
+      </div>
+    </div>
+
+    <div class="hero">
+      <div class="card">
+        <h2>All-in-One Calculator Hub (Premium)</h2>
+        <p>
+          One clean place for your everyday calculations. Built for India formatting (₹), quick results, and a premium look.
+        </p>
+        <div class="tips">
+          <div class="tip">✅ For AdSense later: add Privacy Policy, About, Contact pages + a few FAQs.</div>
+          <div class="tip">✅ For traffic: publish many tools (this is a great start) and add SEO text per tool.</div>
+        </div>
+      </div>
+      <div class="card">
+        <h3 style="margin:0 0 8px">What’s inside</h3>
+        <div class="small">
+          <div>• EMI (Loan)</div>
+          <div>• GST</div>
+          <div>• SIP</div>
+          <div>• FD</div>
+          <div>• Salary (simple in-hand)</div>
+          <div>• Age</div>
+          <div>• Percentage</div>
+          <div>• BMI</div>
+          <div>• Fuel Cost</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid">
+      <div class="card nav" id="nav"></div>
+
+      <div class="card">
+        <!-- EMI -->
+        <section class="pane active" id="pane-emi" data-name="EMI Loan Calculator">
+          <h3>EMI Calculator</h3>
+          <div class="row">
+            <div>
+              <label>Loan Amount (₹)</label>
+              <input id="emi_amount" type="number" min="0" value="500000" />
+            </div>
+            <div>
+              <label>Interest Rate (% per year)</label>
+              <input id="emi_rate" type="number" min="0" step="0.01" value="10.5" />
+            </div>
+          </div>
+          <div class="row">
+            <div>
+              <label>Tenure (Years)</label>
+              <input id="emi_years" type="number" min="0" step="0.5" value="5" />
+            </div>
+            <div>
+              <label>OR Tenure (Months)</label>
+              <input id="emi_months" type="number" min="0" placeholder="optional" />
+            </div>
+          </div>
+          <div class="actions">
+            <button class="btn" onclick="calcEMI()">Calculate</button>
+            <button class="btn secondary" onclick="resetEMI()">Reset</button>
+          </div>
+          <div class="out">
+            <div class="box"><div class="k">Monthly EMI</div><div class="v" id="emi_out">—</div></div>
+            <div class="box"><div class="k">Total Interest</div><div class="v" id="emi_interest">—</div></div>
+            <div class="box"><div class="k">Total Payment</div><div class="v" id="emi_total">—</div></div>
+          </div>
+          <div class="small">Formula: EMI = P × r × (1+r)^n / ((1+r)^n − 1)</div>
+        </section>
+
+        <!-- GST -->
+        <section class="pane" id="pane-gst" data-name="GST Calculator">
+          <h3>GST Calculator</h3>
+          <div class="row">
+            <div>
+              <label>Amount (₹)</label>
+              <input id="gst_amount" type="number" min="0" value="1000" />
+            </div>
+            <div>
+              <label>GST Rate (%)</label>
+              <select id="gst_rate">
+                <option>0</option><option>3</option><option>5</option><option selected>12</option><option>18</option><option>28</option>
+              </select>
+            </div>
+          </div>
+          <div class="row">
+            <div>
+              <label>Mode</label>
+              <select id="gst_mode">
+                <option value="add" selected>Add GST (exclusive → inclusive)</option>
+                <option value="remove">Remove GST (inclusive → exclusive)</option>
+              </select>
+            </div>
+            <div>
+              <label>&nbsp;</label>
+              <button class="btn" style="width:100%" onclick="calcGST()">Calculate</button>
+            </div>
+          </div>
+
+          <div class="out">
+            <div class="box"><div class="k">Base Amount</div><div class="v" id="gst_base">—</div></div>
+            <div class="box"><div class="k">GST Amount</div><div class="v" id="gst_tax">—</div></div>
+            <div class="box"><div class="k">Total Amount</div><div class="v" id="gst_total">—</div></div>
+          </div>
+        </section>
+
+        <!-- SIP -->
+        <section class="pane" id="pane-sip" data-name="SIP Calculator">
+          <h3>SIP Calculator</h3>
+          <div class="row">
+            <div>
+              <label>Monthly Investment (₹)</label>
+              <input id="sip_monthly" type="number" min="0" value="5000" />
+            </div>
+            <div>
+              <label>Expected Return (% per year)</label>
+              <input id="sip_rate" type="number" min="0" step="0.01" value="12" />
+            </div>
+          </div>
+          <div class="row">
+            <div>
+              <label>Time (Years)</label>
+              <input id="sip_years" type="number" min="0" step="0.5" value="10" />
+            </div>
+            <div>
+              <label>&nbsp;</label>
+              <button class="btn" style="width:100%" onclick="calcSIP()">Calculate</button>
+            </div>
+          </div>
+
+          <div class="out">
+            <div class="box"><div class="k">Invested Amount</div><div class="v" id="sip_invested">—</div></div>
+            <div class="box"><div class="k">Estimated Returns</div><div class="v" id="sip_returns">—</div></div>
+            <div class="box"><div class="k">Future Value</div><div class="v" id="sip_total">—</div></div>
+          </div>
+          <div class="small">Uses monthly compounding (approx). Markets involve risk.</div>
+        </section>
+
+        <!-- FD -->
+        <section class="pane" id="pane-fd" data-name="FD Calculator">
+          <h3>FD Calculator</h3>
+          <div class="row">
+            <div>
+              <label>Principal (₹)</label>
+              <input id="fd_principal" type="number" min="0" value="100000" />
+            </div>
+            <div>
+              <label>Interest Rate (% per year)</label>
+              <input id="fd_rate" type="number" min="0" step="0.01" value="7.5" />
+            </div>
+          </div>
+          <div class="row">
+            <div>
+              <label>Time (Years)</label>
+              <input id="fd_years" type="number" min="0" step="0.5" value="3" />
+            </div>
+            <div>
+              <label>Compounding</label>
+              <select id="fd_comp">
+                <option value="1">Yearly</option>
+                <option value="4" selected>Quarterly</option>
+                <option value="12">Monthly</option>
+              </select>
+            </div>
+          </div>
+          <div class="actions">
+            <button class="btn" onclick="calcFD()">Calculate</button>
+          </div>
+
+          <div class="out">
+            <div class="box"><div class="k">Maturity Amount</div><div class="v" id="fd_total">—</div></div>
+            <div class="box"><div class="k">Interest Earned</div><div class="v" id="fd_interest">—</div></div>
+            <div class="box"><div class="k">Principal</div><div class="v" id="fd_principal_out">—</div></div>
+          </div>
+        </section>
+
+        <!-- Salary -->
+        <section class="pane" id="pane-salary" data-name="Salary In-Hand Calculator">
+          <h3>Salary (Simple In-Hand)</h3>
+          <div class="small">
+            This is a simple estimate: In-hand ≈ Gross − PF − Professional Tax − (optional) TDS.  
+            For exact tax slabs, we can add a full India tax calculator later.
+          </div>
+          <div class="row">
+            <div>
+              <label>Monthly Gross Salary (₹)</label>
+              <input id="sal_gross" type="number" min="0" value="40000" />
+            </div>
+            <div>
+              <label>Employee PF (%)</label>
+              <input id="sal_pf" type="number" min="0" step="0.1" value="12" />
+            </div>
+          </div>
+          <div class="row">
+            <div>
+              <label>Professional Tax (₹ per month)</label>
+              <input id="sal_pt" type="number" min="0" value="200" />
+            </div>
+            <div>
+              <label>TDS (₹ per month) – optional</label>
+              <input id="sal_tds" type="number" min="0" value="0" />
+            </div>
+          </div>
+          <div class="actions">
+            <button class="btn" onclick="calcSalary()">Calculate</button>
+          </div>
+
+          <div class="out">
+            <div class="box"><div class="k">Estimated In-Hand / Month</div><div class="v" id="sal_inhand">—</div></div>
+            <div class="box"><div class="k">PF / Month</div><div class="v" id="sal_pf_out">—</div></div>
+            <div class="box"><div class="k">Net / Year</div><div class="v" id="sal_year">—</div></div>
+          </div>
+        </section>
+
+        <!-- Age -->
+        <section class="pane" id="pane-age" data-name="Age Calculator">
+          <h3>Age Calculator</h3>
+          <div class="row">
+            <div>
+              <label>Date of Birth</label>
+              <input id="age_dob" type="date" />
+            </div>
+            <div>
+              <label>As of Date</label>
+              <input id="age_asof" type="date" />
+            </div>
+          </div>
+          <div class="actions">
+            <button class="btn" onclick="calcAge()">Calculate</button>
+            <button class="btn secondary" onclick="setTodayAsof()">Set As-of = Today</button>
+          </div>
+
+          <div class="out">
+            <div class="box"><div class="k">Years</div><div class="v" id="age_years">—</div></div>
+            <div class="box"><div class="k">Months (approx)</div><div class="v" id="age_months">—</div></div>
+            <div class="box"><div class="k">Days (approx)</div><div class="v" id="age_days">—</div></div>
+          </div>
+        </section>
+
+        <!-- Percentage -->
+        <section class="pane" id="pane-perc" data-name="Percentage Calculator">
+          <h3>Percentage Calculator</h3>
+          <div class="row">
+            <div>
+              <label>Value</label>
+              <input id="perc_value" type="number" value="45" />
+            </div>
+            <div>
+              <label>Total</label>
+              <input id="perc_total" type="number" value="60" />
+            </div>
+          </div>
+          <div class="actions">
+            <button class="btn" onclick="calcPercent()">Calculate</button>
+          </div>
+          <div class="out">
+            <div class="box"><div class="k">Percentage</div><div class="v" id="perc_out">—</div></div>
+            <div class="box"><div class="k">Result</div><div class="v" id="perc_label">—</div></div>
+            <div class="box"><div class="k">Remaining</div><div class="v" id="perc_rem">—</div></div>
+          </div>
+        </section>
+
+        <!-- BMI -->
+        <section class="pane" id="pane-bmi" data-name="BMI Calculator">
+          <h3>BMI Calculator</h3>
+          <div class="row">
+            <div>
+              <label>Height (cm)</label>
+              <input id="bmi_h" type="number" min="0" value="180" />
+            </div>
+            <div>
+              <label>Weight (kg)</label>
+              <input id="bmi_w" type="number" min="0" value="77" />
+            </div>
+          </div>
+          <div class="actions">
+            <button class="btn" onclick="calcBMI()">Calculate</button>
+          </div>
+          <div class="out">
+            <div class="box"><div class="k">BMI</div><div class="v" id="bmi_out">—</div></div>
+            <div class="box"><div class="k">Category</div><div class="v" id="bmi_cat">—</div></div>
+            <div class="box"><div class="k">Healthy Weight Range*</div><div class="v" id="bmi_range">—</div></div>
+          </div>
+          <div class="small">*Range based on BMI 18.5–24.9 (general). For medical advice, consult a professional.</div>
+        </section>
+
+        <!-- Fuel -->
+        <section class="pane" id="pane-fuel" data-name="Fuel Cost Calculator">
+          <h3>Fuel Cost Calculator</h3>
+          <div class="row">
+            <div>
+              <label>Trip Distance (km)</label>
+              <input id="fuel_dist" type="number" min="0" value="250" />
+            </div>
+            <div>
+              <label>Car Mileage (km/l)</label>
+              <input id="fuel_mileage" type="number" min="0" step="0.1" value="16" />
+            </div>
+          </div>
+          <div class="row">
+            <div>
+              <label>Fuel Price (₹/litre)</label>
+              <input id="fuel_price" type="number" min="0" step="0.1" value="105" />
+            </div>
+            <div>
+              <label>&nbsp;</label>
+              <button class="btn" style="width:100%" onclick="calcFuel()">Calculate</button>
+            </div>
+          </div>
+          <div class="out">
+            <div class="box"><div class="k">Fuel Needed</div><div class="v" id="fuel_litres">—</div></div>
+            <div class="box"><div class="k">Estimated Cost</div><div class="v" id="fuel_cost">—</div></div>
+            <div class="box"><div class="k">Cost per km</div><div class="v" id="fuel_perkm">—</div></div>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <footer>
+      Tip: After publishing, add Privacy Policy / About / Contact pages for AdSense approval. Then add more calculators for more traffic.
+    </footer>
+  </div>
+
+<script>
+  // ---------- helpers ----------
+  const INR = (n) => {
+    if (!isFinite(n)) return "—";
+    return "₹ " + Number(n).toLocaleString("en-IN", {maximumFractionDigits: 0});
+  };
+  const num = (id) => Number(document.getElementById(id).value || 0);
+  const txt = (id, v) => document.getElementById(id).textContent = v;
+
+  // ---------- navigation ----------
+  const calculators = [
+    {id:"emi", name:"EMI (Loan)", tag:"Most used"},
+    {id:"gst", name:"GST", tag:"India"},
+    {id:"sip", name:"SIP", tag:"Invest"},
+    {id:"fd", name:"FD", tag:"Bank"},
+    {id:"salary", name:"Salary In-Hand", tag:"Estimate"},
+    {id:"age", name:"Age", tag:"Date"},
+    {id:"perc", name:"Percentage", tag:"Marks"},
+    {id:"bmi", name:"BMI", tag:"Health"},
+    {id:"fuel", name:"Fuel Cost", tag:"Cars"}
+  ];
+
+  function renderNav(){
+    const nav = document.getElementById("nav");
+    nav.innerHTML = calculators.map(c => `
+      <button data-open="${c.id}" class="${c.id==='emi'?'active':''}">
+        <span>${c.name}</span>
+        <span class="badge">${c.tag}</span>
+      </button>
+    `).join("");
+
+    nav.querySelectorAll("button").forEach(b=>{
+      b.addEventListener("click", ()=> openPane(b.dataset.open));
+    });
+  }
+
+  function openPane(id){
+    document.querySelectorAll(".pane").forEach(p=>p.classList.remove("active"));
+    document.getElementById("pane-"+id).classList.add("active");
+
+    document.querySelectorAll("#nav button").forEach(b=>b.classList.toggle("active", b.dataset.open===id));
+    // auto-calc for some panes
+    if (id==="emi") calcEMI();
+    if (id==="gst") calcGST();
+  }
+
+  // search filter
+  document.getElementById("search").addEventListener("input", (e)=>{
+    const q = e.target.value.trim().toLowerCase();
+    const nav = document.getElementById("nav");
+    nav.querySelectorAll("button").forEach((b)=>{
+      const label = b.innerText.toLowerCase();
+      b.style.display = label.includes(q) ? "" : "none";
+    });
+  });
+
+  // ---------- EMI ----------
+  function calcEMI(){
+    const P = num("emi_amount");
+    const annualRate = num("emi_rate");
+    const years = num("emi_years");
+    const monthsRaw = document.getElementById("emi_months").value.trim();
+    const n = monthsRaw !== "" ? Number(monthsRaw) : Math.round(years * 12);
+    const r = (annualRate / 100) / 12;
+
+    if (P<=0 || annualRate<0 || n<=0){ txt("emi_out","—"); txt("emi_interest","—"); txt("emi_total","—"); return; }
+
+    let EMI;
+    if (r===0) EMI = P/n;
+    else {
+      const pow = Math.pow(1+r, n);
+      EMI = (P*r*pow)/(pow-1);
+    }
+    const total = EMI*n;
+    const interest = total - P;
+
+    txt("emi_out", INR(EMI));
+    txt("emi_interest", INR(interest));
+    txt("emi_total", INR(total));
+  }
+  function resetEMI(){
+    document.getElementById("emi_amount").value = 500000;
+    document.getElementById("emi_rate").value = 10.5;
+    document.getElementById("emi_years").value = 5;
+    document.getElementById("emi_months").value = "";
+    calcEMI();
+  }
+
+  // ---------- GST ----------
+  function calcGST(){
+    const amt = num("gst_amount");
+    const rate = Number(document.getElementById("gst_rate").value || 0);
+    const mode = document.getElementById("gst_mode").value;
+
+    if (amt<0 || rate<0){ txt("gst_base","—"); txt("gst_tax","—"); txt("gst_total","—"); return; }
+
+    if (mode==="add"){
+      const tax = amt * (rate/100);
+      const total = amt + tax;
+      txt("gst_base", INR(amt));
+      txt("gst_tax", INR(tax));
+      txt("gst_total", INR(total));
+    } else {
+      // amount is inclusive
+      const base = amt / (1 + rate/100);
+      const tax = amt - base;
+      txt("gst_base", INR(base));
+      txt("gst_tax", INR(tax));
+      txt("gst_total", INR(amt));
+    }
+  }
+
+  // ---------- SIP ----------
+  function calcSIP(){
+    const monthly = num("sip_monthly");
+    const annual = num("sip_rate");
+    const years = num("sip_years");
+    const n = Math.round(years * 12);
+    const r = (annual/100)/12;
+
+    if (monthly<=0 || annual<0 || years<=0){ txt("sip_invested","—"); txt("sip_returns","—"); txt("sip_total","—"); return; }
+
+    // Future value of SIP (annuity due approx uses (1+r))
+    // FV = P * [((1+r)^n - 1)/r] * (1+r)
+    let fv;
+    if (r===0) fv = monthly * n;
+    else fv = monthly * ((Math.pow(1+r,n)-1)/r) * (1+r);
+
+    const invested = monthly * n;
+    const returns = fv - invested;
+
+    txt("sip_invested", INR(invested));
+    txt("sip_returns", INR(returns));
+    txt("sip_total", INR(fv));
+  }
+
+  // ---------- FD ----------
+  function calcFD(){
+    const P = num("fd_principal");
+    const rate = num("fd_rate")/100;
+    const years = num("fd_years");
+    const m = Number(document.getElementById("fd_comp").value || 1);
+
+    if (P<=0 || rate<0 || years<=0){ txt("fd_total","—"); txt("fd_interest","—"); txt("fd_principal_out","—"); return; }
+
+    const A = P * Math.pow(1 + rate/m, m*years);
+    txt("fd_total", INR(A));
+    txt("fd_interest", INR(A - P));
+    txt("fd_principal_out", INR(P));
+  }
+
+  // ---------- Salary ----------
+  function calcSalary(){
+    const gross = num("sal_gross");
+    const pfPct = num("sal_pf");
+    const pt = num("sal_pt");
+    const tds = num("sal_tds");
+
+    if (gross<=0 || pfPct<0 || pt<0 || tds<0){ txt("sal_inhand","—"); txt("sal_pf_out","—"); txt("sal_year","—"); return; }
+
+    const pf = gross * (pfPct/100);
+    const inhand = gross - pf - pt - tds;
+    txt("sal_pf_out", INR(pf));
+    txt("sal_inhand", INR(inhand));
+    txt("sal_year", INR(inhand*12));
+  }
+
+  // ---------- Age ----------
+  function setTodayAsof(){
+    const d = new Date();
+    const iso = d.toISOString().slice(0,10);
+    document.getElementById("age_asof").value = iso;
+  }
+  function calcAge(){
+    const dobStr = document.getElementById("age_dob").value;
+    const asofStr = document.getElementById("age_asof").value;
+
+    if (!dobStr || !asofStr){ txt("age_years","—"); txt("age_months","—"); txt("age_days","—"); return; }
+
+    const dob = new Date(dobStr+"T00:00:00");
+    const asof = new Date(asofStr+"T00:00:00");
+    if (asof < dob){ txt("age_years","—"); txt("age_months","—"); txt("age_days","—"); return; }
+
+    const ms = asof - dob;
+    const days = Math.floor(ms / (1000*60*60*24));
+    const years = (days / 365.2425);
+    const months = years * 12;
+
+    txt("age_years", years.toFixed(2));
+    txt("age_months", months.toFixed(1));
+    txt("age_days", days.toLocaleString("en-IN"));
+  }
+
+  // ---------- Percentage ----------
+  function calcPercent(){
+    const v = num("perc_value");
+    const t = num("perc_total");
+    if (t<=0){ txt("perc_out","—"); txt("perc_label","—"); txt("perc_rem","—"); return; }
+    const p = (v/t)*100;
+    txt("perc_out", p.toFixed(2)+"%");
+    txt("perc_rem", (t-v).toLocaleString("en-IN"));
+    const label = p>=90 ? "Excellent" : p>=75 ? "Very Good" : p>=60 ? "Good" : p>=40 ? "Pass" : "Needs work";
+    txt("perc_label", label);
+  }
+
+  // ---------- BMI ----------
+  function calcBMI(){
+    const h = num("bmi_h");
+    const w = num("bmi_w");
+    if (h<=0 || w<=0){ txt("bmi_out","—"); txt("bmi_cat","—"); txt("bmi_range","—"); return; }
+
+    const m = h/100;
+    const bmi = w/(m*m);
+    txt("bmi_out", bmi.toFixed(1));
+
+    let cat = "Normal";
+    if (bmi < 18.5) cat = "Underweight";
+    else if (bmi < 25) cat = "Normal";
+    else if (bmi < 30) cat = "Overweight";
+    else cat = "Obese";
+    txt("bmi_cat", cat);
+
+    const minW = 18.5*m*m;
+    const maxW = 24.9*m*m;
+    txt("bmi_range", `${minW.toFixed(1)}–${maxW.toFixed(1)} kg`);
+  }
+
+  // ---------- Fuel ----------
+  function calcFuel(){
+    const dist = num("fuel_dist");
+    const mileage = num("fuel_mileage");
+    const price = num("fuel_price");
+    if (dist<=0 || mileage<=0 || price<0){ txt("fuel_litres","—"); txt("fuel_cost","—"); txt("fuel_perkm","—"); return; }
+
+    const litres = dist / mileage;
+    const cost = litres * price;
+    txt("fuel_litres", litres.toFixed(2) + " L");
+    txt("fuel_cost", INR(cost));
+    txt("fuel_perkm", "₹ " + (cost/dist).toFixed(2));
+  }
+
+  // init
+  renderNav();
+  setTodayAsof();
+  calcEMI();
+</script>
+</body>
+</html>

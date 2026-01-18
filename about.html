@@ -1,0 +1,110 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>About – Calculator Hub</title>
+  <meta name="description" content="About Calculator Hub – premium all-in-one calculators for EMI, GST, SIP, FD, Salary, BMI and more." />
+  <style>
+    :root{
+      --bg:#070a10; --card:#0d1320; --border:#1c2a40; --text:#eaf0f8; --muted:#a9b7ca; --muted2:#7f92ab;
+      --accent:#4f8cff; --accent2:#7c5cff; --shadow: 0 18px 60px rgba(0,0,0,.45); --radius:18px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;color:var(--text);
+      background:
+        radial-gradient(900px 500px at 20% -10%, rgba(79,140,255,.22), transparent 60%),
+        radial-gradient(900px 500px at 90% 0%, rgba(124,92,255,.16), transparent 55%),
+        radial-gradient(900px 500px at 50% 110%, rgba(43,212,167,.08), transparent 60%),
+        var(--bg);
+    }
+    a{color:#9cc5ff;text-decoration:none}
+    .wrap{max-width:980px;margin:0 auto;padding:22px}
+    .topbar{
+      display:flex;align-items:center;justify-content:space-between;gap:14px;
+      padding:14px 16px;border:1px solid var(--border);border-radius:22px;
+      background:rgba(13,19,32,.7);backdrop-filter: blur(10px);
+      box-shadow: var(--shadow);
+      position:sticky;top:14px;z-index:10;
+    }
+    .brand{display:flex;align-items:center;gap:10px}
+    .logo{
+      width:38px;height:38px;border-radius:14px;
+      background:linear-gradient(135deg,var(--accent),var(--accent2));
+      display:grid;place-items:center;font-weight:900;
+      box-shadow: 0 10px 30px rgba(79,140,255,.25);
+    }
+    .brand h1{font-size:16px;margin:0}
+    .brand p{margin:0;color:var(--muted2);font-size:12px}
+    .nav a{
+      padding:10px 12px;border-radius:14px;border:1px solid transparent;color:var(--muted);font-size:14px;
+    }
+    .nav a:hover{border-color:var(--border);background:rgba(11,17,28,.55);color:var(--text)}
+    .nav a.active{border-color:rgba(79,140,255,.35);background:linear-gradient(135deg, rgba(79,140,255,.20), rgba(124,92,255,.14));color:var(--text)}
+    .card{
+      margin-top:16px;
+      border:1px solid var(--border);border-radius:var(--radius);
+      background:rgba(13,19,32,.72);backdrop-filter: blur(10px);
+      box-shadow: var(--shadow);
+      padding:18px;
+    }
+    h2{margin:0 0 10px;font-size:22px}
+    p,li{color:var(--muted);line-height:1.65}
+    ul{margin:8px 0 0 18px}
+    footer{margin:18px 0 8px;text-align:center;color:var(--muted2);font-size:12px;line-height:1.55}
+    .pill{
+      display:inline-block;margin-top:10px;
+      padding:8px 10px;border:1px solid var(--border);border-radius:999px;
+      background:rgba(11,17,28,.6);color:var(--muted2);font-size:12px;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="topbar">
+      <div class="brand">
+        <div class="logo">Σ</div>
+        <div>
+          <h1>Calculator Hub</h1>
+          <p>Fast • Clean • Mobile-friendly</p>
+        </div>
+      </div>
+      <div class="nav">
+        <a href="index.html">Home</a>
+        <a class="active" href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a href="privacy.html">Privacy</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>About Calculator Hub</h2>
+      <p>
+        Calculator Hub is a simple, premium-looking website that provides useful everyday calculators in one place —
+        like EMI, GST, SIP, FD, Salary in-hand estimates, BMI, Age, Percentage, and Fuel cost.
+      </p>
+
+      <div class="pill">Goal: quick answers with a clean UI</div>
+
+      <h2 style="margin-top:16px">What we provide</h2>
+      <ul>
+        <li>Easy-to-use calculators with India-friendly formatting (₹).</li>
+        <li>Mobile-first design for fast usage.</li>
+        <li>Clear results (monthly EMI, totals, breakdowns where possible).</li>
+      </ul>
+
+      <h2 style="margin-top:16px">Disclaimer</h2>
+      <p>
+        Results are estimates based on standard formulas. For financial or medical decisions, please consult a qualified professional.
+      </p>
+    </div>
+
+    <footer>© <span id="y"></span> Calculator Hub</footer>
+  </div>
+
+  <script>
+    document.getElementById("y").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
