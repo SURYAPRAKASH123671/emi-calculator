@@ -1,34 +1,51 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Contact – Calculator Hub</title>
-  <meta name="description" content="Contact Calculator Hub for feedback, feature requests, or issues." />
+  <meta name="description" content="Contact Calculator Hub for suggestions, feedback, or issues." />
+  <meta name="robots" content="index,follow" />
+
+  <!-- AdSense (ONLY ONCE) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9235465003690011"
+    crossorigin="anonymous"></script>
+
   <style>
     :root{
-      --bg:#070a10; --card:#0d1320; --border:#1c2a40; --text:#eaf0f8; --muted:#a9b7ca; --muted2:#7f92ab;
-      --accent:#4f8cff; --accent2:#7c5cff; --shadow: 0 18px 60px rgba(0,0,0,.45); --radius:18px;
+      --bg:#070a10;
+      --card:#0d1320;
+      --border:#1c2a40;
+      --text:#eaf0f8;
+      --muted:#a9b7ca;
+      --muted2:#7f92ab;
+      --accent:#4f8cff;
+      --accent2:#7c5cff;
+      --shadow: 0 18px 60px rgba(0,0,0,.45);
+      --radius: 18px;
     }
     *{box-sizing:border-box}
     body{
-      margin:0;font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;color:var(--text);
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
       background:
         radial-gradient(900px 500px at 20% -10%, rgba(79,140,255,.22), transparent 60%),
         radial-gradient(900px 500px at 90% 0%, rgba(124,92,255,.16), transparent 55%),
         radial-gradient(900px 500px at 50% 110%, rgba(43,212,167,.08), transparent 60%),
         var(--bg);
+      color:var(--text);
     }
     a{color:#9cc5ff;text-decoration:none}
-    .wrap{max-width:980px;margin:0 auto;padding:22px}
+    .wrap{max-width:1100px;margin:0 auto;padding:22px}
     .topbar{
       display:flex;align-items:center;justify-content:space-between;gap:14px;
       padding:14px 16px;border:1px solid var(--border);border-radius:22px;
       background:rgba(13,19,32,.7);backdrop-filter: blur(10px);
       box-shadow: var(--shadow);
       position:sticky;top:14px;z-index:10;
+      flex-wrap:wrap;
     }
-    .brand{display:flex;align-items:center;gap:10px}
+    .brand{display:flex;align-items:center;gap:10px;min-width:220px}
     .logo{
       width:38px;height:38px;border-radius:14px;
       background:linear-gradient(135deg,var(--accent),var(--accent2));
@@ -37,37 +54,41 @@
     }
     .brand h1{font-size:16px;margin:0}
     .brand p{margin:0;color:var(--muted2);font-size:12px}
-    .nav a{
-      padding:10px 12px;border-radius:14px;border:1px solid transparent;color:var(--muted);font-size:14px;
+    .pill{
+      display:flex;gap:8px;align-items:center;
+      padding:10px 12px;border:1px solid var(--border);
+      border-radius:16px;background:rgba(11,17,28,.6);color:var(--muted);
+      font-size:13px;white-space:nowrap;
     }
-    .nav a:hover{border-color:var(--border);background:rgba(11,17,28,.55);color:var(--text)}
-    .nav a.active{border-color:rgba(79,140,255,.35);background:linear-gradient(135deg, rgba(79,140,255,.20), rgba(124,92,255,.14));color:var(--text)}
     .card{
       margin-top:16px;
-      border:1px solid var(--border);border-radius:var(--radius);
-      background:rgba(13,19,32,.72);backdrop-filter: blur(10px);
+      border:1px solid var(--border);
+      border-radius:var(--radius);
+      background:rgba(13,19,32,.72);
+      backdrop-filter: blur(10px);
       box-shadow: var(--shadow);
       padding:18px;
     }
     h2{margin:0 0 10px;font-size:22px}
-    p{color:var(--muted);line-height:1.65}
-    label{display:block;margin:10px 0 6px;color:#cfe0f5;font-size:13px}
-    input,textarea{
-      width:100%;padding:12px;border-radius:14px;border:1px solid #273a57;
-      background:rgba(11,17,28,.65);color:var(--text);font-size:15px;outline:none;
+    p{margin:0 0 10px;color:var(--muted);line-height:1.7}
+    .box{
+      margin-top:12px;
+      border:1px solid var(--border);
+      border-radius:16px;
+      background:rgba(11,17,28,.6);
+      padding:14px;
+      color:var(--muted);
+      line-height:1.7;
     }
-    textarea{min-height:120px;resize:vertical}
-    input:focus,textarea:focus{border-color:rgba(79,140,255,.7);box-shadow:0 0 0 4px rgba(79,140,255,.12)}
-    .btn{
-      margin-top:12px;border:0;cursor:pointer;padding:11px 14px;border-radius:14px;font-weight:700;
-      background:linear-gradient(135deg,var(--accent),var(--accent2));
-      color:white;box-shadow:0 14px 40px rgba(79,140,255,.18);
-      width:100%;
+    footer{
+      margin:18px 0 8px;
+      color:var(--muted2);
+      font-size:12px;line-height:1.55;
+      text-align:center;
     }
-    .small{font-size:13px;color:var(--muted2);line-height:1.55;margin-top:10px}
-    footer{margin:18px 0 8px;text-align:center;color:var(--muted2);font-size:12px;line-height:1.55}
   </style>
 </head>
+
 <body>
   <div class="wrap">
     <div class="topbar">
@@ -75,64 +96,43 @@
         <div class="logo">Σ</div>
         <div>
           <h1>Calculator Hub</h1>
-          <p>Feedback • Issues • Requests</p>
+          <p>EMI • GST • SIP • FD • Salary • BMI • More</p>
         </div>
       </div>
-      <div class="nav">
-        <a href="index.html">Home</a>
-        <a href="about.html">About</a>
-        <a class="active" href="contact.html">Contact</a>
-        <a href="privacy.html">Privacy</a>
+
+      <div style="display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end;align-items:center">
+        <a class="pill" href="index.html">Home</a>
+        <a class="pill" href="about.html">About</a>
+        <a class="pill" href="contact.html">Contact</a>
+        <a class="pill" href="privacy.html">Privacy</a>
+        <span class="pill" style="gap:6px"><span>⚡</span><span>Fast &amp; Mobile-friendly</span></span>
       </div>
     </div>
 
     <div class="card">
       <h2>Contact</h2>
-      <p>Use this form to draft your message. (This page does not send automatically until you connect it to an email/service.)</p>
+      <p>
+        If you found any issue, want a new calculator, or have suggestions, you can contact us.
+      </p>
 
-      <label>Your Name</label>
-      <input id="name" placeholder="Enter your name" />
-
-      <label>Your Email</label>
-      <input id="email" type="email" placeholder="Enter your email" />
-
-      <label>Message</label>
-      <textarea id="msg" placeholder="Type your message..."></textarea>
-
-      <button class="btn" onclick="copyMessage()">Copy Message</button>
-
-      <div class="small" id="status"></div>
-      <div class="small">
-        To enable real sending later, we can connect a free form backend (Google Forms / Formspree / Netlify Forms).
+      <div class="box">
+        <b>How to contact:</b><br/>
+        • Email: <i>add-your-email-here@example.com</i> <br/>
+        • For quick updates: write feedback in GitHub Issues (if you use GitHub)
       </div>
+
+      <p style="margin-top:14px">
+        Note: Please do not share sensitive personal info (OTP, bank details, passwords).
+      </p>
     </div>
 
-    <footer>© <span id="y"></span> Calculator Hub</footer>
+    <footer>
+      © <span id="y"></span> Calculator Hub • Thanks for supporting
+    </footer>
   </div>
 
   <script>
     document.getElementById("y").textContent = new Date().getFullYear();
-
-    async function copyMessage(){
-      const name = document.getElementById("name").value.trim();
-      const email = document.getElementById("email").value.trim();
-      const msg = document.getElementById("msg").value.trim();
-      const text =
-`Contact Request – Calculator Hub
-
-Name: ${name || "-"}
-Email: ${email || "-"}
-
-Message:
-${msg || "-"}`;
-
-      try{
-        await navigator.clipboard.writeText(text);
-        document.getElementById("status").textContent = "✅ Copied. You can paste and send this via Gmail/WhatsApp.";
-      }catch(e){
-        document.getElementById("status").textContent = "⚠️ Copy failed. Please select text and copy manually.";
-      }
-    }
   </script>
 </body>
 </html>
