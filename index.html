@@ -1,4 +1,4 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
@@ -6,6 +6,11 @@
   <title>All-in-One Calculator Hub (India) – EMI, GST, SIP, FD, Salary, BMI & More</title>
   <meta name="description" content="Premium all-in-one calculator hub: EMI, GST, SIP, FD, Salary in-hand, Age, Percentage, BMI, and Fuel Cost." />
   <meta name="robots" content="index,follow" />
+
+  <!-- AdSense (ONLY ONCE) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9235465003690011"
+    crossorigin="anonymous"></script>
+
   <style>
     :root{
       --bg:#070a10;
@@ -41,6 +46,7 @@
       background:rgba(13,19,32,.7);backdrop-filter: blur(10px);
       box-shadow: var(--shadow);
       position:sticky;top:14px;z-index:10;
+      flex-wrap:wrap;
     }
     .brand{display:flex;align-items:center;gap:10px;min-width:220px}
     .logo{
@@ -55,6 +61,7 @@
       flex:1;display:flex;gap:10px;align-items:center;
       border:1px solid var(--border);border-radius:16px;padding:10px 12px;
       background:rgba(11,17,28,.6);
+      min-width:240px;
     }
     .search input{
       width:100%;background:transparent;border:0;outline:0;color:var(--text);
@@ -170,14 +177,12 @@
       font-size:12px;line-height:1.55;
       text-align:center;
     }
-    .ok{color:var(--good)}
-    .no{color:var(--bad)}
   </style>
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9235465003690011"
-     crossorigin="anonymous"></script>
 </head>
+
 <body>
   <div class="wrap">
+
     <div class="topbar">
       <div class="brand">
         <div class="logo">Σ</div>
@@ -192,20 +197,22 @@
         <input id="search" placeholder="Search: EMI, GST, SIP, FD, Salary, BMI, Age..." />
       </div>
 
-      <div style="display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end">   <a class="pill" href="index.html" style="text-decoration:none">Home</a>   <a class="pill" href="about.html" style="text-decoration:none">About</a>   <a class="pill" href="contact.html" style="text-decoration:none">Contact</a>   <a class="pill" href="privacy.html" style="text-decoration:none">Privacy</a> </div>
-        <span>⚡</span><span>Fast & Mobile-friendly</span>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end;align-items:center">
+        <a class="pill" href="index.html">Home</a>
+        <a class="pill" href="about.html">About</a>
+        <a class="pill" href="contact.html">Contact</a>
+        <a class="pill" href="privacy.html">Privacy</a>
+        <span class="pill" style="gap:6px"><span>⚡</span><span>Fast &amp; Mobile-friendly</span></span>
       </div>
     </div>
 
     <div class="hero">
       <div class="card">
         <h2>All-in-One Calculator Hub (Premium)</h2>
-        <p>
-          One clean place for your everyday calculations. Built for India formatting (₹), quick results, and a premium look.
-        </p>
+        <p>One clean place for your everyday calculations. Built for India formatting (₹), quick results, and a premium look.</p>
         <div class="tips">
-          <div class="tip">✅ For AdSense later: add Privacy Policy, About, Contact pages + a few FAQs.</div>
-          <div class="tip">✅ For traffic: publish many tools (this is a great start) and add SEO text per tool.</div>
+          <div class="tip">✅ For AdSense: Privacy Policy / About / Contact pages + a few FAQs.</div>
+          <div class="tip">✅ For traffic: publish more calculators and add SEO text per tool.</div>
         </div>
       </div>
       <div class="card">
@@ -261,14 +268,6 @@
             <div class="box"><div class="k">Total Payment</div><div class="v" id="emi_total">—</div></div>
           </div>
           <div class="small">Formula: EMI = P × r × (1+r)^n / ((1+r)^n − 1)</div>
-          <div class="small">
-  <h4 style="margin:14px 0 6px;color:#cfe0f5">EMI FAQ (India)</h4>
-  <p><b>What is EMI?</b> EMI (Equated Monthly Instalment) is the fixed amount you pay every month to repay a loan.</p>
-  <p><b>How is EMI calculated?</b> EMI depends on loan amount, interest rate, and tenure.</p>
-  <p><b>What affects EMI most?</b> Interest rate and tenure. Longer tenure reduces EMI but increases total interest.</p>
-  <p><b>Is this exact for banks?</b> Standard EMI is accurate; extra fees/insurance may be separate.</p>
-</div>
-
         </section>
 
         <!-- GST -->
@@ -299,19 +298,11 @@
               <button class="btn" style="width:100%" onclick="calcGST()">Calculate</button>
             </div>
           </div>
-
           <div class="out">
             <div class="box"><div class="k">Base Amount</div><div class="v" id="gst_base">—</div></div>
             <div class="box"><div class="k">GST Amount</div><div class="v" id="gst_tax">—</div></div>
             <div class="box"><div class="k">Total Amount</div><div class="v" id="gst_total">—</div></div>
           </div>
-          <div class="small">
-  <h4 style="margin:14px 0 6px;color:#cfe0f5">GST FAQ</h4>
-  <p><b>Add GST</b> converts base price (exclusive) into final price (inclusive).</p>
-  <p><b>Remove GST</b> finds base price from a GST-inclusive amount.</p>
-  <p><b>Common GST rates:</b> 5%, 12%, 18%, 28% depending on product/service.</p>
-  <p><b>CGST/SGST vs IGST:</b> Intra-state: CGST+SGST. Inter-state: IGST.</p>
-</div>
         </section>
 
         <!-- SIP -->
@@ -337,22 +328,14 @@
               <button class="btn" style="width:100%" onclick="calcSIP()">Calculate</button>
             </div>
           </div>
-
           <div class="out">
             <div class="box"><div class="k">Invested Amount</div><div class="v" id="sip_invested">—</div></div>
             <div class="box"><div class="k">Estimated Returns</div><div class="v" id="sip_returns">—</div></div>
             <div class="box"><div class="k">Future Value</div><div class="v" id="sip_total">—</div></div>
           </div>
-          <div class="small">Uses monthly compounding (approx). Markets involve risk.</div>
-          <div class="small">
-  <h4 style="margin:14px 0 6px;color:#cfe0f5">SIP FAQ</h4>
-  <p><b>What is SIP?</b> SIP is investing a fixed amount every month in mutual funds.</p>
-  <p><b>How is SIP return calculated?</b> This calculator uses monthly compounding estimate based on expected annual return.</p>
-  <p><b>Is SIP guaranteed?</b> No. Market returns can vary; this is only an estimate.</p>
-  <p><b>How to grow faster?</b> Increase monthly amount, invest longer, and avoid stopping SIP during market dips.</p>
-</div>
-   </section>
-    <!-- FD -->
+        </section>
+
+        <!-- FD -->
         <section class="pane" id="pane-fd" data-name="FD Calculator">
           <h3>FD Calculator</h3>
           <div class="row">
@@ -382,27 +365,16 @@
           <div class="actions">
             <button class="btn" onclick="calcFD()">Calculate</button>
           </div>
-
           <div class="out">
             <div class="box"><div class="k">Maturity Amount</div><div class="v" id="fd_total">—</div></div>
             <div class="box"><div class="k">Interest Earned</div><div class="v" id="fd_interest">—</div></div>
             <div class="box"><div class="k">Principal</div><div class="v" id="fd_principal_out">—</div></div>
           </div>
-          <div class="small">
-  <h4 style="margin:14px 0 6px;color:#cfe0f5">FD FAQ</h4>
-  <p><b>What is FD?</b> Fixed Deposit is a bank investment with fixed interest for a fixed time.</p>
-  <p><b>What is compounding?</b> Interest is added periodically (monthly/quarterly/yearly) and then earns interest again.</p>
-  <p><b>Which compounding gives more?</b> More frequent compounding usually gives slightly higher maturity amount.</p>
-  <p><b>Is FD risk-free?</b> Usually low-risk, but depends on the bank/institution.</p>
-</div>
-</section>
+        </section>
+
         <!-- Salary -->
         <section class="pane" id="pane-salary" data-name="Salary In-Hand Calculator">
           <h3>Salary (Simple In-Hand)</h3>
-          <div class="small">
-            This is a simple estimate: In-hand ≈ Gross − PF − Professional Tax − (optional) TDS.  
-            For exact tax slabs, we can add a full India tax calculator later.
-          </div>
           <div class="row">
             <div>
               <label>Monthly Gross Salary (₹)</label>
@@ -426,20 +398,11 @@
           <div class="actions">
             <button class="btn" onclick="calcSalary()">Calculate</button>
           </div>
-
           <div class="out">
             <div class="box"><div class="k">Estimated In-Hand / Month</div><div class="v" id="sal_inhand">—</div></div>
             <div class="box"><div class="k">PF / Month</div><div class="v" id="sal_pf_out">—</div></div>
             <div class="box"><div class="k">Net / Year</div><div class="v" id="sal_year">—</div></div>
           </div>
-          <div class="small">
-  <h4 style="margin:14px 0 6px;color:#cfe0f5">Salary In-Hand FAQ</h4>
-  <p><b>What is in-hand salary?</b> The salary you receive after PF, professional tax and (optional) TDS.</p>
-  <p><b>Is this exact?</b> It’s an estimate. Actual depends on company salary structure and tax regime.</p>
-  <p><b>What reduces in-hand most?</b> PF and TDS usually impact the most.</p>
-  <p><b>How to increase in-hand?</b> Legit tax planning and better salary structure (consult a professional).</p>
-</div>
-
         </section>
 
         <!-- Age -->
@@ -459,19 +422,12 @@
             <button class="btn" onclick="calcAge()">Calculate</button>
             <button class="btn secondary" onclick="setTodayAsof()">Set As-of = Today</button>
           </div>
-
           <div class="out">
             <div class="box"><div class="k">Years</div><div class="v" id="age_years">—</div></div>
             <div class="box"><div class="k">Months (approx)</div><div class="v" id="age_months">—</div></div>
             <div class="box"><div class="k">Days (approx)</div><div class="v" id="age_days">—</div></div>
           </div>
-          <div class="small">
-  <h4 style="margin:14px 0 6px;color:#cfe0f5">Age Calculator FAQ</h4>
-  <p><b>How is age calculated?</b> By subtracting DOB from the selected “as of” date.</p>
-  <p><b>Why months/days are approx?</b> Months have different lengths; so it’s an estimate.</p>
-  <p><b>Can I calculate future age?</b> Yes, set “as of” date to the future.</p>
-</div>
-</section>
+        </section>
 
         <!-- Percentage -->
         <section class="pane" id="pane-perc" data-name="Percentage Calculator">
@@ -517,15 +473,7 @@
             <div class="box"><div class="k">Category</div><div class="v" id="bmi_cat">—</div></div>
             <div class="box"><div class="k">Healthy Weight Range*</div><div class="v" id="bmi_range">—</div></div>
           </div>
-          <div class="small">*Range based on BMI 18.5–24.9 (general). For medical advice, consult a professional.</div>
-          <div class="small">
-  <h4 style="margin:14px 0 6px;color:#cfe0f5">BMI FAQ</h4>
-  <p><b>What is BMI?</b> BMI = weight(kg) ÷ height(m)².</p>
-  <p><b>Healthy range?</b> Generally 18.5–24.9 (varies by person).</p>
-  <p><b>Is BMI perfect?</b> Not always—muscular people can show higher BMI.</p>
-  <p><b>Use BMI for:</b> Quick screening, not a medical diagnosis.</p>
-</div>
-</section>
+        </section>
 
         <!-- Fuel -->
         <section class="pane" id="pane-fuel" data-name="Fuel Cost Calculator">
@@ -554,13 +502,9 @@
             <div class="box"><div class="k">Fuel Needed</div><div class="v" id="fuel_litres">—</div></div>
             <div class="box"><div class="k">Estimated Cost</div><div class="v" id="fuel_cost">—</div></div>
             <div class="box"><div class="k">Cost per km</div><div class="v" id="fuel_perkm">—</div></div>
-          <div class="small">
-  <h4 style="margin:14px 0 6px;color:#cfe0f5">Fuel Cost FAQ</h4>
-  <p><b>Fuel needed:</b> Litres = Distance ÷ Mileage.</p>
-  <p><b>Total cost:</b> Litres × Fuel price per litre.</p>
-  <p><b>Why cost differs?</b> Traffic, AC, tyre pressure, load, and driving style change mileage.</p>
-</div>
+          </div>
         </section>
+
       </div>
     </div>
 
@@ -610,7 +554,6 @@
     document.getElementById("pane-"+id).classList.add("active");
 
     document.querySelectorAll("#nav button").forEach(b=>b.classList.toggle("active", b.dataset.open===id));
-    // auto-calc for some panes
     if (id==="emi") calcEMI();
     if (id==="gst") calcGST();
   }
@@ -672,7 +615,6 @@
       txt("gst_tax", INR(tax));
       txt("gst_total", INR(total));
     } else {
-      // amount is inclusive
       const base = amt / (1 + rate/100);
       const tax = amt - base;
       txt("gst_base", INR(base));
@@ -691,8 +633,6 @@
 
     if (monthly<=0 || annual<0 || years<=0){ txt("sip_invested","—"); txt("sip_returns","—"); txt("sip_total","—"); return; }
 
-    // Future value of SIP (annuity due approx uses (1+r))
-    // FV = P * [((1+r)^n - 1)/r] * (1+r)
     let fv;
     if (r===0) fv = monthly * n;
     else fv = monthly * ((Math.pow(1+r,n)-1)/r) * (1+r);
@@ -745,7 +685,6 @@
   function calcAge(){
     const dobStr = document.getElementById("age_dob").value;
     const asofStr = document.getElementById("age_asof").value;
-
     if (!dobStr || !asofStr){ txt("age_years","—"); txt("age_months","—"); txt("age_days","—"); return; }
 
     const dob = new Date(dobStr+"T00:00:00");
@@ -817,16 +756,3 @@
 </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
